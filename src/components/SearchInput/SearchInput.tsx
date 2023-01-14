@@ -1,12 +1,19 @@
 import React from 'react';
 import {Grid, Input} from "@mui/material";
 
-const SearchInput = () => {
+interface SearchInputProps {
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
+}
+const SearchInput: React.FC<SearchInputProps> = ({onChange, value}) => {
     return (
         <Grid>
             <Input
                 sx={{ margin: 3 }}
-                placeholder="The most successful IT companies in 2020"
+                placeholder="Search..."
+                value={value}
+                onChange={onChange}
             />
         </Grid>
     );

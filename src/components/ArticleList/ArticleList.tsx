@@ -3,10 +3,16 @@ import {useAppSelector} from "../../hooks/useTypedSelector";
 import {useActions} from "../../hooks/useActions";
 import {Box, CircularProgress, Grid} from "@mui/material";
 import ArticleCard from "../ArticleСard/ArticleСard";
+import {ArticleModel} from "../../models/Article";
 
-const ArticleList: React.FC = () => {
+interface ArticleListProps {
+    articlesToRender: ArticleModel[]
+}
+const ArticleList: React.FC<ArticleListProps> = ({articlesToRender}) => {
     const { error, loading, articles } = useAppSelector((state) => state.articles)
     const { fetchArticle } = useActions()
+
+    console.log(articlesToRender)
 
     useEffect(() => {
         fetchArticle()
@@ -29,7 +35,7 @@ const ArticleList: React.FC = () => {
             columns={{ xs: 2, sm: 8, md: 12, lg: 14, xl: 18 }}
             justifyContent="center"
         >
-            {articles.map(article => (
+            {articlesToRender.map(article => (
                 <Grid
                     item xs={2} sm={4} md={4} lg={4} xl={4}
                     key={article.id}>

@@ -5,6 +5,7 @@ const SearchInput = () => {
     return (
         <Grid>
             <Input
+                sx={{ margin: 3 }}
                 placeholder="The most successful IT companies in 2020"
             />
         </Grid>

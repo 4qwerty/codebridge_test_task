@@ -2,21 +2,26 @@ import React from 'react';
 import {
     Button,
     Card,
-    CardActionArea,
     CardActions,
     CardContent,
     CardMedia,
     Typography
 } from "@mui/material";
 import {ArticleModel} from "../../models/Article";
-import {useAppDispatch} from "../../hooks/useTypedSelector";
+import { useNavigate } from 'react-router-dom'
 
 interface ArticleProps {
     article: ArticleModel
 }
 
 const ArticleCard: React.FC<ArticleProps> = ({article}) => {
-    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
+
+    const openArticle = async (article: ArticleModel) => {
+        navigate("/article", {
+            state: { article },
+        })
+    }
 
     return (
         <Card sx={{ maxWidth: 400, minHeight: 530 }}>
@@ -33,7 +38,10 @@ const ArticleCard: React.FC<ArticleProps> = ({article}) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Read more</Button>
+                <Button
+                    size="small"
+                    onClick={() => openArticle(article)}
+                >Read more</Button>
             </CardActions>
         </Card>
     );

@@ -27,7 +27,7 @@ const ArticleList: React.FC = () => {
         <Grid
             container spacing={{ xs: 1, md: 3, lg: 4, xl: 5}}
             columns={{ xs: 2, sm: 8, md: 12, lg: 14, xl: 18 }}
-
+            justifyContent="center"
         >
             {articles.map(article => (
                 <Grid
